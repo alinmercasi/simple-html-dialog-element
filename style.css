@@ -1,0 +1,285 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&family=Poppins:wght@300;400;600&display=swap');
+
+/* =========================
+======= custom props =======
+========================= */
+
+:root {
+  --clr-primary: #515070;
+  --clr-secondary: #ff8e6e;
+  --clr-neutral-100: #fdf6dc;
+  --clr-accent-300: #f8f1ff;
+  --clr-accent-600: #decdf5;
+  --clr-neutral-800: #333;
+
+  /* spaces */
+
+  --sp-200: 0.5rem;
+  --sp-400: 1rem;
+  --sp-500: 1.5rem;
+  --sp-600: 2.5rem;
+  --sp-800: 3rem;
+
+  /* font sizes */
+  --fs-400: 1.2rem;
+  --fs-700: 2.2rem;
+
+  --ff-primary: 'Poppins', sans-serif;
+  --ff-secondary: 'Josefin Sans', sans-serif;
+
+  --br: 1.5rem;
+}
+
+/* =========================
+======= reset =======
+========================= */
+
+/* https://piccalil.li/blog/a-modern-css-reset */
+
+/* Remove default margin */
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =========================
+======= basic styles =======
+========================= */
+
+body {
+  font-family: var(--ff-primary);
+  line-height: 1.6;
+  color: var(--clr-neutral-800);
+  background-color: var(--clr-neutral-100);
+  font-size: var(--fs-400);
+}
+
+main {
+  width: min(92vw, 60rem);
+  margin-inline: auto;
+}
+
+h1,
+h2 {
+  line-height: 1;
+  font-family: var(--ff-secondary);
+  font-weight: 700;
+  color: var(--clr-primary);
+}
+
+h1 {
+  margin: var(--sp-600) 0;
+  font-size: var(--fs-700);
+}
+
+p + p {
+  margin-top: var(--sp-500);
+}
+
+p:last-of-type {
+  margin-bottom: var(--sp-600);
+}
+
+a {
+  color: var(--clr-secondary);
+}
+
+button {
+  border: none;
+  color: var(--clr-neutral-100);
+  font-weight: 600;
+  transition: background-color 0.125s;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+input {
+  padding: var(--sp-200) var(--sp-400);
+  border: none;
+  background-color: var(--clr-accent-300);
+}
+
+input:focus {
+  background-color: var(--clr-accent-600);
+  outline: none;
+}
+
+input::placeholder {
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+}
+
+/* block */
+.button-primary {
+  padding: var(--sp-200) var(--sp-400);
+  background-color: var(--clr-primary);
+}
+
+.button-secondary {
+  position: absolute;
+  top: 0.5rem;
+  right: 1.3rem;
+  background: transparent;
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--clr-primary);
+}
+.button-primary:focus {
+  background-color: var(--clr-secondary);
+}
+
+.button-secondary:focus {
+  color: var(--clr-secondary);
+}
+
+@media (hover) {
+  .button-primary:hover {
+    background-color: var(--clr-secondary);
+  }
+  .button-secondary:hover {
+    color: var(--clr-secondary);
+  }
+}
+
+/* =============================
+======= dialog component =======
+============================= */
+
+/* prevent user from scrolling the page when dialog is open. not supported yet */
+
+html:has(.modal[open]) {
+  overflow: hidden;
+}
+
+.modal {
+  margin: auto;
+  width: min(92vw, 35rem);
+  padding: var(--sp-800);
+  border: none;
+  border-radius: var(--br);
+  background-color: var(--clr-neutral-100);
+  box-shadow: 0 0.1rem 1.5rem rgba(0 0 0 / 0.3);
+}
+.modal[open],
+.modal[open]::backdrop {
+  display: block;
+  animation: fadeIn 0.125s forwards;
+}
+
+.modal:not([open]),
+.modal:not([open])::backdrop {
+  display: none;
+}
+
+.modal:not([open]),
+.modal[data-closing='true'] {
+  pointer-events: none;
+}
+
+.modal[open]::backdrop {
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0 0 0 / 0.5);
+  backdrop-filter: blur(0.25rem);
+  transition: backdrop-filter 0.125s linear;
+}
+.modal[data-closing='true'],
+.modal[data-closing='true']::backdrop {
+  animation: fadeOut 0.125s forwards;
+}
+/* animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* not related to the functionality */
+form {
+  display: flex;
+  gap: 0;
+}
+
+form input {
+  width: 100%;
+  border-radius: var(--br) 0 0 var(--br);
+  box-shadow: inset 0 0 0 0.1rem var(--clr-primary);
+}
+
+form button {
+  border-radius: 0 var(--br) var(--br) 0;
+}

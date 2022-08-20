@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Basic HTML Dialog Component</title>
+  </head>
+  <body>
+    <main>
+      <h1>Basic HTML &lt;dialog&gt; component</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus
+        cupiditate sit error vero animi, sequi a iste nostrum consequatur non.
+      </p>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eius atque
+        <a class="color-secondary" href="#">open from link</a>
+        veritatis nihil blanditiis, nulla doloribus aut sunt perferendis itaque.
+        Iusto expedita aliquam, minima quaerat at.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio possimus,
+        temporibus expedita nisi corporis atque dolorem, odio esse veniam
+        tempore odit, rerum nihil illum at.
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet
+        placeat porro autem rem ut eos, iusto ex sequi!
+      </p>
+      <button
+        class="button-primary"
+        data-role="open-dialog"
+        aria-label="close modal"
+      >
+        Open Modal
+      </button>
+      <dialog
+        class="modal"
+        aria-labelledby="dialog-title"
+        aria-describedby="dialog-description"
+      >
+        <button class="close-button button-secondary" data-role="close-dialog">
+          x
+        </button>
+        <div class="description">
+          <h2 id="dialog-title">Don't miss out!</h2>
+          <p id="dialog-description">
+            Sign up for our newsletter to stay in the loop
+          </p>
+        </div>
+        <form action="/">
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="email address"
+            autofocus
+            required
+          />
+          <button class="button-primary">Subscribe</button>
+        </form>
+      </dialog>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
