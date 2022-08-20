@@ -1,6 +1,6 @@
 # Todo app concept with theme toggler
 
-A small app concept idea just to sharpen some of my skills
+A small native html dialog element just to sharpen some of my skills
 
 ## Table of contents
 
@@ -35,7 +35,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: [View live demo](https://alinmercasi.github.io/simple-javascript-todo-app-with-theme-switcher-/)
+- Live Site URL: [View live demo](https://alinmercasi.github.io/simple-html-dialog-element/)
 
 ## My process
 
